@@ -33,7 +33,7 @@ aliases['PromptGenLepMatch2l'] = {
 
 # Fake leptons transfer factor --------------------------------------
 aliases['fakeW'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"nominal\", 2, \"std\");')"],
     'expr': 'fr_reader(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples'    : ['Fake']
@@ -41,54 +41,54 @@ aliases['fakeW'] = {
 
 # And variations - already divided by central values in formulas !
 aliases['fakeWEleUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_EleUp = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"EleUp\", 2, \"std\");')"],
     'expr': 'fr_reader_EleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 aliases['fakeWEleDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_EleDown = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"EleDown\", 2, \"std\");')"],
     'expr': 'fr_reader_EleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWMuUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_MuUp = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"MuUp\", 2, \"std\");')"],
     'expr': 'fr_reader_MuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWMuDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_MuDown = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"MuDown\", 2, \"std\");')"],
     'expr': 'fr_reader_MuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWStatEleUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatEleUp = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"StatEleUp\", 2, \"std\");')"],
     'expr': 'fr_reader_StatEleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 aliases['fakeWStatEleDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatEleDown = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"StatEleDown\", 2, \"std\");')"],
     'expr': 'fr_reader_StatEleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWStatMuUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatMuUp = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"StatMuUp\", 2, \"std\");')"],
     'expr': 'fr_reader_StatMuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWStatMuDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatMuDown = fake_rate_reader(\"2023BPix\", \"Run3\", \"67\", \"StatMuDown\", 2, \"std\");')"],
     'expr': 'fr_reader_StatMuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased__LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
