@@ -12,7 +12,7 @@ mc     = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb', 'DAT
 mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA', 'DATA_Mu', 'DATA_EMu', 'Fake_EG', 'Fake_Mu', 'Fake_EMu')]
 
 # LepSF2l__ele_wp90iso__mu_cut_Tight_HWW
-eleWP = 'cutBased_LooseID_tthMVA_Run3'
+eleWP = 'cutBased_LooseID_tthMVA_HWW'
 muWP  = 'cut_TightID_pfIsoLoose_HWW_tthmva_67'
 
 aliases['LepWPCut'] = {
@@ -33,64 +33,71 @@ aliases['PromptGenLepMatch2l'] = {
 
 # Fake leptons transfer factor --------------------------------------
 aliases['fakeW'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"nominal\", 2, \"std\");')"],
-    'expr': 'fr_reader(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples'    : ['Fake']
 }
 
 # And variations - already divided by central values in formulas !
 aliases['fakeWEleUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_EleUp = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"EleUp\", 2, \"std\");')"],
-    'expr': 'fr_reader_EleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_EleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 aliases['fakeWEleDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_EleDown = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"EleDown\", 2, \"std\");')"],
-    'expr': 'fr_reader_EleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_EleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWMuUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_MuUp = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"MuUp\", 2, \"std\");')"],
-    'expr': 'fr_reader_MuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_MuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWMuDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_MuDown = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"MuDown\", 2, \"std\");')"],
-    'expr': 'fr_reader_MuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_MuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWStatEleUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatEleUp = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"StatEleUp\", 2, \"std\");')"],
-    'expr': 'fr_reader_StatEleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_StatEleUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 aliases['fakeWStatEleDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatEleDown = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"StatEleDown\", 2, \"std\");')"],
-    'expr': 'fr_reader_StatEleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_StatEleDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
+## Top pT reweighting ##
+
+aliases['Top_pTrw'] = {
+    'expr': '(topGenPt * antitopGenPt > 0.) * (TMath::Sqrt((0.103*TMath::Exp(-0.0118*topGenPt) - 0.000134*topGenPt + 0.973) * (0.103*TMath::Exp(-0.0118*antitopGenPt) - 0.000134*antitopGenPt + 0.973))) + (topGenPt * antitopGenPt <= 0.)',
+    'samples': ['TTTo2L2Nu'],
+}
+
 aliases['fakeWStatMuUp'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatMuUp = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"StatMuUp\", 2, \"std\");')"],
-    'expr': 'fr_reader_StatMuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_StatMuUp(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
 aliases['fakeWStatMuDown'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/fake_rate_reader_class.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/fake_rate_reader_class.cc"'],
     'linesToProcess':["ROOT.gInterpreter.Declare('fake_rate_reader fr_reader_StatMuDown = fake_rate_reader(\"2023\", \"Run3\", \"67\", \"StatMuDown\", 2, \"std\");')"],
-    'expr': 'fr_reader_StatMuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_Run3, CleanJet_pt, nCleanJet)',
+    'expr': 'fr_reader_StatMuDown(Lepton_pdgId, Lepton_pt, Lepton_eta, Lepton_isTightMuon_cut_TightID_pfIsoLoose_HWW_tthmva_67, Lepton_isTightElectron_cutBased_LooseID_tthMVA_HWW, CleanJet_pt, nCleanJet)',
     'samples': ['Fake']
 }
 
@@ -107,7 +114,7 @@ aliases['gstarHigh'] = {
 
 aliases['KFactor_ggWW_NLO'] = {
     'linesToProcess':[
-        'ROOT.gSystem.Load("/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/ggww_kfactor_cc.so","", ROOT.kTRUE)',
+        'ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/ggww_kfactor_cc.so","", ROOT.kTRUE)',
         "ROOT.gInterpreter.Declare('ggww_K_producer k_reader_GGWW = ggww_K_producer();')"
     ],
     'expr': f'k_reader_GGWW(nLHEPart,LHEPart_pt,LHEPart_eta,LHEPart_phi,LHEPart_mass,LHEPart_pdgId,LHEPart_status)',
@@ -128,8 +135,8 @@ aliases['KFactor_ggWW_Down'] = {
 
 aliases['wwNLL'] = {
     'linesToProcess':[
-        'ROOT.gSystem.Load("/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/qqww_kfactor_cc.so","", ROOT.kTRUE)',
-        """ROOT.gInterpreter.Declare('qqww_K_producer k_reader_QQWW = qqww_K_producer("/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/wwresum/central.dat","/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/wwresum/resum_up.dat", "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/wwresum/resum_down.dat","/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/wwresum/scale_up.dat","/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/wwresum/scale_down.dat");')"""
+        'ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/qqww_kfactor_cc.so","", ROOT.kTRUE)',
+        """ROOT.gInterpreter.Declare('qqww_K_producer k_reader_QQWW = qqww_K_producer("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/wwresum/central.dat","/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/wwresum/resum_up.dat", "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/wwresum/resum_down.dat","/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/wwresum/scale_up.dat","/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/wwresum/scale_down.dat");')"""
     ],
     'expr': f'k_reader_QQWW(GenPart_pt,GenPart_eta,GenPart_phi,GenPart_mass,GenPart_pdgId,GenPart_status,GenPart_statusFlags,0)',
     'samples': ['WW']
@@ -153,9 +160,9 @@ aliases['nllW_Qdown'] = {
 }
 
 aliases['Weight2MINLO'] = {
-    'linesToProcess': ['ROOT.gSystem.Load("/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/weight2MINLO_cc.so")'],
+    'linesToProcess': ['ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/weight2MINLO_cc.so")'],
     'class': 'Weight2MINLO',
-    'args': '"NNLOPS_reweight.root", HTXS_njets30, HTXS_Higgs_pt',
+    'args': '"/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/NNLOPS_reweight.root", HTXS_njets30, HTXS_Higgs_pt',
     'samples': ['ggH_hww']
 }
 
@@ -183,7 +190,7 @@ aliases['multiJet'] = {
 #}
 
 aliases['noJetInHorn'] = {
-    'linesToAdd' : ['#include "/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/jet_horns.cc"'],
+    'linesToAdd' : ['#include "/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/jet_horns.cc"'],
     'expr': 'Jet_inHorns(CleanJet_pt, CleanJet_eta)',
     'afterNuis': True
 }
@@ -201,7 +208,7 @@ aliases['mpmet'] = {
 ############################################################################
 # B-Tagging WP: https://btv-wiki.docs.cern.ch/ScaleFactors/Run3Summer23BPix/
 ############################################################################
-
+'''
 # Algo / WP / WP cut
 btagging_WPs = {
     "DeepFlavB" : {
@@ -218,6 +225,15 @@ btagging_WPs = {
     }
 }
 
+
+'''
+btagging_WPs = {
+    "DeepFlavB" : {"loose" : "0.0479", "medium" : "0.2431", "tight" : "0.6553", "xtight" : "0.7667", "xxtight" : "0.9459"},
+    "RobustParTAK4B" : {"loose" : "0.0681", "medium" : "0.3487", "tight" : "0.7969", "xtight" : "0.8882", "xxtight" : "0.9883"},
+    "PNetB" : {"loose" : "0.0358", "medium" : " 0.1917", "tight" : "0.6172", "xtight" : "0.7515", "xxtight" : "0.9659"}
+}
+
+
 # Algo / SF name
 btagging_SFs = {
     "DeepFlavB"      : "deepjet",
@@ -226,7 +242,8 @@ btagging_SFs = {
 }
 
 # Algorithm and WP selection
-bAlgo = 'RobustParTAK4B' # ['DeepFlavB','RobustParTAK4B','PNetB'] 
+bAlgo = 'PNetB' # ['DeepFlavB','RobustParTAK4B','PNetB'] 
+
 bWP    = 'loose'     # ['loose','medium','tight','xtight','xxtight']
 bSF   = 'deepjet'
 
@@ -240,8 +257,22 @@ aliases['bReq'] = {
     'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Take(Jet_btag{}, CleanJet_jetIdx) > {}) >= 1'.format(bAlgo, btagging_WPs[bAlgo][bWP])
 }
 
+aliases['bReq1'] = {
+    'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && '
+            'Take(Jet_btag{}, CleanJet_jetIdx) > {}) == 1'
+            .format(bAlgo, btagging_WPs[bAlgo][bWP])
+}
+
+aliases['bReq2'] = {
+    'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && '
+            'Take(Jet_btag{}, CleanJet_jetIdx) > {}) == 2'
+            .format(bAlgo, btagging_WPs[bAlgo][bWP])
+}
+
+
+
 year = '2023_Summer23' 
-btv_path =  '/afs/cern.ch/work/s/sblancof/private/Run2Analysis/sendEOSJobs/jsonpog-integration/POG/BTV/' + year
+btv_path =  '/eos/user/m/mcaserta/Run3_WW/mkShapesRDF/mkShapesRDF/jsonpog-integration/POG/BTV/' + year
 shifts = ['central', 'up_uncorrelated', 'down_uncorrelated', 'up_correlated', 'down_correlated']
 shift_str = '{"' + '","'.join(shifts) + '"}'
 
@@ -249,8 +280,8 @@ for flavour in ['bc', 'light']:
     btagsf_tmp = 'btagSF_TMP_' + flavour
     aliases[btagsf_tmp] = {
         'linesToProcess':[
-            f'ROOT.gSystem.Load("/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/extended/evaluate_btagSF{flavour}_cc.so","", ROOT.kTRUE)',
-            f"ROOT.gInterpreter.Declare('btagSF{flavour} btag_SF{flavour} = btagSF{flavour}(\"/afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/data/btag_eff/bTagEff_2023_ttbar_loose.root\",\"{year}\",\"_parT\");')"
+            f'ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/evaluate_btagSF{flavour}_cc.so","", ROOT.kTRUE)',
+            f"ROOT.gInterpreter.Declare('btagSF{flavour} btag_SF{flavour} = btagSF{flavour}(\"/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/data/btag_eff/bTagEff_2023_ttbar_loose.root\",\"{year}\",\"_parT\");')"
         ],
         'expr': f'btag_SF{flavour}(CleanJet_pt, CleanJet_eta, CleanJet_jetIdx, nCleanJet, Jet_hadronFlavour, Jet_btag{bAlgo}, "L", {shift_str})',
         'samples' : mc,
@@ -263,6 +294,19 @@ for flavour in ['bc', 'light']:
             'expr': f"{btagsf_tmp}[{i}]",
             'samples' : mc,
         }
+
+
+
+##########################################################################
+# End of b tagging
+##########################################################################
+
+# Top control region
+#aliases['topcrSeb'] = {
+#    'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
+#}
+
+
 
 
 # Top control region
@@ -320,3 +364,6 @@ aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Down',
     'samples': mc
 }
+
+
+
