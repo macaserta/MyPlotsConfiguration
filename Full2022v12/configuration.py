@@ -1,7 +1,7 @@
 import sys,os
 
 #: tag used to identify the configuration folder version
-tag = "HWW_2022"   
+tag = "2026__WW_2022_def_4March"   
 
 #: file to use as runner script, default uses mkShapesRDF.shapeAnalysis.runner, otherwise specify path to script
 runnerFile = "default"
@@ -10,7 +10,7 @@ runnerFile = "default"
 outputFile = "mkShapes__{}.root".format(tag)
 
 #: path to ouput folder
-outputFolder = "../../../../../../../../../../../../../eos/user/s/sblancof/MC/rootFiles"
+outputFolder = "/eos/user/" + os.getlogin()[0] + "/" + os.getlogin() + "/mkShapesRDF_rootfiles/" + tag + "/rootFile/"
 #outputFolder = "rootFiles/DY_CR_2024/"
 
 # path to batch folder (used for condor submission)
@@ -38,6 +38,7 @@ samplesFile = "samples.py"
 # file with dict of samples
 plotFile = "plot.py"
 #plotFile = "plot_nH.py"
+outputDirDatacard = "/eos/user/m/mcaserta/datacards/" + tag
 
 # file with dict of structure (used to define combine processes)
 structureFile = "structure.py"
@@ -46,7 +47,7 @@ structureFile = "structure.py"
 nuisancesFile = "nuisances_ALL.py"
 
 # path to folder where to save plots
-plotPath = "Plots/HWW_2022/" + tag
+plotPath = "/eos/user/m/mcaserta/www/Plots_2026/Plots/WW_2022_March5/" + tag
 
 # this lines are executed right before the runner on the condor node
 mountEOS = [
