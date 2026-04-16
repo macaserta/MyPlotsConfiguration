@@ -1,11 +1,11 @@
 
 mcProduction = 'Summer22EE_130x_nAODv12_Full2022v12'
-mcSteps      = 'MCl2loose2022EEv12__MCCorr2022EEv12JetScaling__sblancof__l2tight'
+mcSteps      = 'MCl2loose2022EEv12__MCCorr2022EEv12JetScaling__l2tight'
 dataReco     = 'Run2022EE_Prompt_nAODv12_Full2022v12'
-dataSteps    = 'DATAl2loose2022EEv12__sblancof__l2loose'
+dataSteps    = 'DATAl2loose2022EEv12__l2loose'
 
-treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/calderon/HWWNano/'
-treeBaseDir_data = '/eos/user/s/sblancof/MC/'
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/'
+
 limitFiles = -1
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
@@ -27,9 +27,48 @@ def makeMCDirectory(var=''):
 
 mcDirectory = makeMCDirectory()
 #fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
-dataDirectory = os.path.join(treeBaseDir_data, dataReco, dataSteps)
+dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
 fakeDirectory = dataDirectory
 print(treeBaseDir)
+
+
+##################################################################
+
+cuts0j_CR  = []
+cuts1j_CR  = []
+cuts2j_CR  = []
+
+for cutname, cutdict in cuts.items():
+    # Considera solo le control regions (CR)
+    if 'CR' in cutname:
+        for cat in cutdict['categories']:
+            if '0j' in cat:
+                cuts0j_CR.append(f'{cutname}_{cat}')
+            elif '1j' in cat:
+                cuts1j_CR.append(f'{cutname}_{cat}')
+            elif '2j' in cat:
+                cuts2j_CR.append(f'{cutname}_{cat}')
+
+
+cuts0j_SR  = []
+cuts1j_SR  = []
+cuts2j_SR  = []
+
+
+for cutname, cutdict in cuts.items():
+    # Considera solo le control regions (CR)
+    if 'SR' in cutname:
+        for cat in cutdict['categories']:
+            if '0j' in cat:
+                cuts0j_CR.append(f'{cutname}_{cat}')
+            elif '1j' in cat:
+                cuts1j_CR.append(f'{cutname}_{cat}')
+            elif '2j' in cat:
+                cuts2j_CR.append(f'{cutname}_{cat}')
+
+################################################################
+
+
 
 cuts0j = []
 cuts1j = []
@@ -567,81 +606,101 @@ nuisances['CRSR_accept_WW'] = {
 }
 
 ##rate parameters
-nuisances['DYembnorm0j']  = {
-               'name'  : 'CMS_hww_DYttnorm0j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-nuisances['DYembnorm1j']  = {
-               'name'  : 'CMS_hww_DYttnorm1j',
-               'samples'  : {
-                   'DY' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-nuisances['DYembnorm2j']  = {
-                 'name'  : 'CMS_hww_DYttnorm2j',
-                 'samples'  : {
-                   'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts_2j,
-                }
+
+########## DY ##########
+nuisances['DYnorm0j'] = {
+    'name': 'CMS_ww_DYnorm0j_2022EE',
+    'samples': {'DY': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts0j_CR
+}
+
+nuisances['DYnorm1j'] = {
+    'name': 'CMS_ww_DYnorm1j_2022EE',
+    'samples': {'DY': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts1j_CR
+}
+
+nuisances['DYnorm2j'] = {
+    'name': 'CMS_ww_DYnorm2j_2022EE',
+    'samples': {'DY': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts2j_CR
+}
+
+########## Top ##########
+nuisances['Topnorm0j'] = {
+    'name': 'CMS_ww_Topnorm0j_2022EE',
+    'samples': {'top': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts0j_CR
+}
+
+nuisances['Topnorm1j'] = {
+    'name': 'CMS_ww_Topnorm1j_2022EE',
+    'samples': {'top': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts1j_CR
+}
+
+nuisances['Topnorm2j'] = {
+    'name': 'CMS_ww_Topmorm2j_2022EE',
+    'samples': {'top': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts2j_CR
+}
+
+########## NonPrompt / Fake ##########
+nuisances['Fakenorm0j'] = {
+    'name': 'CMS_ww_Fakenorm0j_2022EE',
+    'samples': {'Fake': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts0j_CR
+}
+
+nuisances['Fakenorm1j'] = {
+    'name': 'CMS_ww_Fakenorm1j_2022EE',
+    'samples': {'Fake': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts1j_CR
+}
+
+nuisances['Fakenorm2j'] = {
+    'name': 'CMS_ww_Fakenorm2j_2022EE',
+    'samples': {'Fake': '1.00'},
+    'type': 'rateParam',
+    'cuts': cuts2j_CR
+}
+
+
+
+
+########## WW ####################
+
+
 nuisances['WWnorm0j']  = {
-               'name'  : 'CMS_hww_WWnorm0j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   #'WW_minnlo' : '1.00',
-                   },
+               'name'  : 'CMS_ww_WWnorm0j_2022EE',
+               'samples'  : {'WW' : '1.00' },
                'type'  : 'rateParam',
-               'cuts'  : cuts0j
+               'cuts'  : cuts0j_SR
               }
 nuisances['WWnorm1j']  = {
-               'name'  : 'CMS_hww_WWnorm1j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   #'WW_minnlo' : '1.00',
-                   },
+               'name'  : 'CMS_ww_WWnorm1j_2022EE',
+               'samples'  : {'WW' : '1.00'},
                'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
+               'cuts'  : cuts1j_SR
+        }
 nuisances['WWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   #'WW_minnlo' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts': cuts_2j,
+                'name'  : 'CMS_ww_WWnorm2j_2022EE',
+                'samples'  : {'WW' : '1.00'},
+                'type'  : 'rateParam',
+                'cuts': cuts2j_SR
               }
-nuisances['Topnorm0j']  = {
-               'name'  : 'CMS_hww_Topnorm0j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-nuisances['Topnorm1j']  = {
-               'name'  : 'CMS_hww_Topnorm1j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-nuisances['Topnorm2j']  = {
-               'name'  : 'CMS_hww_Topnorm2j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts_2j
-              }
+
+
+
+
 
 ### MC statistical uncertainty
 autoStats = True
