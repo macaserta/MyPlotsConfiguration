@@ -18,7 +18,7 @@ import ROOT
 ######
 ######
 
-filename = "/eos/user/s/sblancof/MC/rootFiles/mkShapes__HWW_2022EE.root"
+filename = "/eos/user/m/mcaserta/mkShapesRDF_rootfiles/2026__WW_2022EE_def/rootFile/mkShapes__2026__WW_2022EE_def.root"
 
 ######
 ######
@@ -58,9 +58,7 @@ print("Nuisances to postprocess:")
 print(nuisances_to_process.keys())
 print("\n")
 
-nuisances_keys = nuisances_to_process.keys()
-
-for nuisance in nuisances_keys:
+for nuisance in nuisances_to_process:
     print(nuisance)
     tmp_nuisance = {}
     tmp_nuisance[nuisance] = nuisances_to_process[nuisance]
