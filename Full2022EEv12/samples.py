@@ -6,16 +6,14 @@ redirector = ""
 useXROOTD = False
 
 mcProduction = 'Summer22EE_130x_nAODv12_Full2022v12'
-mcSteps      = 'MCl2loose2022EEv12__MCCorr2022EEv12JetScaling__sblancof__l2tight'
+mcSteps      = 'MCl2loose2022EEv12__MCCorr2022EEv12JetScaling__l2tight'
 dataReco     = 'Run2022EE_Prompt_nAODv12_Full2022v12'
-dataSteps    = 'DATAl2loose2022EEv12__sblancof__l2loose'
+dataSteps    = 'DATAl2loose2022EEv12__l2loose'
 
 ##############################################
 ###### Tree base directory for the site ######
 ##############################################
-treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/calderon/HWWNano/'
-treeBaseDir_data = '/eos/user/s/sblancof/MC/'
-
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/'
 limitFiles = -1
 
 def makeMCDirectory(var=""):
@@ -30,7 +28,7 @@ def makeMCDirectory(var=""):
 
 mcDirectory   = makeMCDirectory()
 # fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
-dataDirectory = os.path.join(treeBaseDir_data, dataReco, dataSteps)
+dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
 fakeDirectory = dataDirectory
 
 samples = {}
@@ -94,7 +92,7 @@ DataRun = [
 DataSets = ['MuonEG','SingleMuon','Muon','EGamma']
 
 DataTrig = {
-    'MuonEG'         : ' Trigger_ElMu' ,
+    'MuonEG'         : 'Trigger_ElMu' ,
     'SingleMuon'     : '!Trigger_ElMu && Trigger_sngMu' ,
     'Muon'           : '!Trigger_ElMu && (Trigger_sngMu || Trigger_dblMu)',
     'EGamma'         : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_dblMu && (Trigger_sngEl || Trigger_dblEl)'
@@ -121,7 +119,7 @@ samples['DY'] = {
 }
 
 ########## top #########
-files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + nanoGetSampleFiles(mcDirectory, 'TWminusto2L2Nu') + nanoGetSampleFiles(mcDirectory, 'TbarWplusto2L2Nu')
+files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + nanoGetSampleFiles(mcDirectory, 'TWminusto2L2Nu') + nanoGetSampleFiles(mcDirectory, 'TbarWplusto2L2Nu') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop')
 
 samples['top'] = {
     'name': files,
@@ -191,13 +189,22 @@ samples['ZZ'] = {
 ######## Vg ########
 files = []
 for label in [
-        "ZG",
-        "ZG2JtoG2L2J",
-        "WGtoLNuG-1J_PTG10to100",
-        "WGtoLNuG-1J_PTG100to200",
-        "WGtoLNuG-1J_PTG200to400",
-        "WGtoLNuG-1J_PTG400to600",
-        "WGtoLNuG-1J_PTG600"]:
+#        "ZG",
+#        "ZG2JtoG2L2J",
+        "DYGto2LG-1Jets_MLL-4to50_PTG-10to100",
+        "DYGto2LG-1Jets_MLL-4to50_PTG-100to200",
+        "DYGto2LG-1Jets_MLL-4to50_PTG-200",
+        "DYGto2LG-1Jets_MLL-50_PTG-10to100",
+        "DYGto2LG-1Jets_MLL-50_PTG-100to200",
+        "DYGto2LG-1Jets_MLL-50_PTG-200to400",
+        "DYGto2LG-1Jets_MLL-50_PTG-400to600",
+        "DYGto2LG-1Jets_MLL-50_PTG-600",
+        "WGtoLNuG-1J"]:
+#        "WGtoLNuG-1J_PTG10to100",
+#        "WGtoLNuG-1J_PTG100to200",
+#        "WGtoLNuG-1J_PTG200to400",
+#        "WGtoLNuG-1J_PTG400to600",
+#        "WGtoLNuG-1J_PTG600"]:
 
     files += nanoGetSampleFiles(mcDirectory, label)
 
@@ -219,13 +226,23 @@ samples['VgS'] = {
     'FilesPerJob': 5,
 }
 
-addSampleWeight(samples, 'VgS', "ZG", "(Gen_ZGstar_mass > 0)")
-addSampleWeight(samples, 'VgS', "ZG2JtoG2L2J", "(Gen_ZGstar_mass > 0)")
-addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG10to100", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
-addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG100to200", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
-addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG200to400", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
-addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG400to600", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
-addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG600", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "ZG", "(Gen_ZGstar_mass > 0)")
+#addSampleWeight(samples, 'VgS', "ZG2JtoG2L2J", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-4to50_PTG-10to100", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-4to50_PTG-100to200", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-4to50_PTG-200", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-50_PTG-10to100", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-50_PTG-100to200", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-50_PTG-200to400", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-50_PTG-400to600", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_MLL-50_PTG-600", "(Gen_ZGstar_mass > 0)")
+addSampleWeight(samples, 'VgS', "WGtoLNuG-1J", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG10to100", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG10to100", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG100to200", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG200to400", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG400to600", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
+#addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG600", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
 addSampleWeight(samples, 'VgS', "WZ", "(Gen_ZGstar_mass > 0.1) * (gstarLow * 0.94)")
 
 ########## VVV #########
