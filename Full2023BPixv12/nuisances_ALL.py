@@ -1,10 +1,16 @@
 
 mcProduction = 'Summer23BPix_130x_nAODv12_Full2023BPixv12'
-mcSteps      = 'MCl2loose2023BPixv12__MCCorr2023BPixv12JetScaling__sblancof__l2tight'
+mcSteps      = 'MCl2loose2023BPixv12__MCCorr2023BPixv12JetScaling__l2tight'
 dataReco     = 'Run2023BPix_Prompt_nAODv12_Full2023BPixv12'
-dataSteps    = 'DATAl2loose2023BPixv12__sblancof__l2loose'
+dataSteps    = 'DATAl2loose2023BPixv12__l2loose'
 
-treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/calderon/HWWNano/'
+##############################################
+###### Tree base directory for the site ######
+##############################################
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
+
+
+
 limitFiles = -1
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
