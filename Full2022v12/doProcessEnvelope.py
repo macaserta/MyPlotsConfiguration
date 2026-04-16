@@ -18,7 +18,7 @@ import ROOT
 ######
 ######
 
-filename = "/eos/user/s/sblancof/MC/rootFiles/mkShapes__HWW_2022.root"
+filename = "/eos/user/m/mcaserta/mkShapesRDF_rootfiles/2026__WW_2022_def_4March/rootFile/mkShapes__2026__WW_2022_def_4March.root "
 
 ######
 ######
@@ -64,4 +64,40 @@ for nuisance in nuisances_to_process:
     tmp_nuisance[nuisance] = nuisances_to_process[nuisance]
     postProcessNuisances(filename, samples, aliases, variables, cuts, tmp_nuisance)
 
+
+[mcaserta@lxplus947 Full2022v12]$ cuts = {}
+
+_tmp = [
+    #'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13',
+    'Lepton_pt[0] > 25.',
+    'Lepton_pt[1] > 10.',
+    '(abs(Lepton_pdgId[1]) == 13 || Lepton_pt[1] > 13.)',
+    '(nLepton >= 2 && Alt(Lepton_pt,2, 0) < 10.)',
+    'ptll>15',
+    'mll > 12',
+    '(zeroJet || Sum(CleanJet_pt>30.0)<=3)',
+    'noJetInHorn_pT30'
+]
+
+preselections = ' && '.join(_tmp)
+
+cuts['Zee']  = {
+   'expr' : '(Lepton_pdgId[0] * Lepton_pdgId[1] == -11*11) && mll > 60 && mll < 120',
+   'categories' : {
+       '0j' : 'zeroJet',
+       '1j' : 'oneJet && Alt(CleanJet_pt,1,0)<30',
+       '2j' : 'multiJet',
+       'Inc' : '1',
+  }
+}
+
+cuts['Zmm']  = {
+    'expr' : '(Lepton_pdgId[0] * Lepton_pdgId[1] == -13*13) && mll > 60 && mll < 120',
+    'categories' : {
+        '0j' : 'zeroJet',
+        '1j' : 'oneJet && Alt(CleanJet_pt,1,0)<30',
+        '2j' : 'multiJet',
+        'Inc' : '1',
+    }
+}
 
