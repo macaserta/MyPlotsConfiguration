@@ -2,7 +2,7 @@
 variables = {}
 
 variables['events'] = {
-    'name'  : '1',      
+    'name'  : 'mll/mll',      
     'range' : (1,0,2),  
     'xaxis' : 'events', 
     'fold'  : 3
