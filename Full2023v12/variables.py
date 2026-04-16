@@ -17,7 +17,7 @@ variables['nvtx'] = {
 
 variables['mll'] = {
     'name': 'mll',    
-    'range' : (60,60,120), 
+    'range' : (60,0,120), 
     'xaxis' : 'm_{ll} [GeV]',
     'fold' : 0
 }
