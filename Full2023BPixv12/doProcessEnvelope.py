@@ -18,7 +18,7 @@ import ROOT
 ######
 ######
 
-filename = "/eos/user/s/sblancof/MC/rootFiles/mkShapes__HWW_2023BPix.root"
+filename = "/eos/user/m/mcaserta/mkShapesRDF_rootfiles/2026__WW_2023BPix_def/rootFile/mkShapes__2026__WW_2023BPix_def.root  "
 
 ######
 ######
