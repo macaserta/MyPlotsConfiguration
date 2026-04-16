@@ -24,13 +24,13 @@ groupPlot['WZ']  = {
     'samples'  : ['WZ']
 }
 
-groupPlot['ZZ']  = {
-    'nameHR'   : 'ZZ',
-    'isSignal' : 0,
-    'color'    : 617,
-    'colorPlt': "#800080",
-    'samples'  : ['ZZ']
-}
+#groupPlot['ZZ']  = {
+#    'nameHR'   : 'ZZ',
+#    'isSignal' : 0,
+#    'color'    : 617,
+#    'colorPlt': "#800080",
+#    'samples'  : ['ZZ']
+#}
 
 groupPlot['Fake']  = {
     'nameHR' : 'nonprompt',
@@ -42,19 +42,19 @@ groupPlot['Fake']  = {
 
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
-    'isSignal' : 0,
+    'isSignal' : 1,
     'color'    : 851,
     'colorPlt': "#87cefa",
     'samples'  : ['WW','ggWW']
 }
 
-groupPlot['VVV']  = {  
-    'nameHR' : 'VVV',
-    'isSignal' : 0,
-    'color': 857, # kAzure -3
-    'colorPlt': "#4b0082",
-    'samples'  : ['VVV']
-}
+#groupPlot['VVV']  = {  
+#    'nameHR' : 'VVV',
+#    'isSignal' : 0,
+#    'color': 857, # kAzure -3
+#    'colorPlt': "#4b0082",
+#    'samples'  : ['VVV']
+#}
 
 groupPlot['Vg']  = {  
     'nameHR' : "$V\gamma$",
@@ -66,7 +66,7 @@ groupPlot['Vg']  = {
 
 groupPlot['ggF']  = {
     'nameHR' : "ggF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 623,
     'colorPlt': "#7a21dd",
     'samples'  : ['ggH_hww']
@@ -74,7 +74,7 @@ groupPlot['ggF']  = {
 
 groupPlot['VBF']  = {
     'nameHR' : "VBF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 600,
     'colorPlt': "#e42536",
     'samples'  : ['qqH_hww']
@@ -139,19 +139,19 @@ plot['WZ']  = {
     'scale'    : 1.0,
 }
 
-plot['ZZ']  = {
-    'color'    : 617,
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0,
-}
+#plot['ZZ']  = {
+#    'color'    : 617,
+#    'isSignal' : 0,
+#    'isData'   : 0,
+#    'scale'    : 1.0,
+#}
 
-plot['VVV']  = { 
-    'color': 857, # kAzure -3  
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+#plot['VVV']  = { 
+#    'color': 857, # kAzure -3  
+#    'isSignal' : 0,
+#    'isData'   : 0,
+#    'scale'    : 1.0
+#}
 
 plot['qqH_hww'] = {
     'nameHR' : 'qqH',
