@@ -11,7 +11,7 @@ groupPlot['top']  = {
     'nameHR'   : 'Top',
     'isSignal' : 0,
     'color'    : 400,
-    'samples'  : ['TTTo2L2Nu']
+    'samples'  : ['top']
 }
 
 groupPlot['WZ']  = {
@@ -35,14 +35,14 @@ groupPlot['Fake']  = {
     'colorPlt': "#778899",
     'samples'  : ['Fake']
 }
-
+'''
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
-    'isSignal' : 0,
+    'isSignal' : 1,
     'color'    : 851,
     'samples'  : ['WW','ggWW']
 }
-
+'''
 groupPlot['VVV']  = {  
     'nameHR' : 'VVV',
     'isSignal' : 0,
@@ -51,17 +51,17 @@ groupPlot['VVV']  = {
     'samples'  : ['VVV']
 }
 
-#groupPlot['Vg']  = {  
-#    'nameHR' : "$V\gamma$",
-#    'isSignal' : 0,
-#    'color'    : 810,   # kOrange + 10
-#    'colorPlt': "#e76300",
-#    'samples'  : ['Vg', 'VgS']
-#}
+groupPlot['Vg']  = {  
+    'nameHR' : "$V\gamma$",
+    'isSignal' : 0,
+    'color'    : 810,   # kOrange + 10
+    'colorPlt': "#e76300",
+    'samples'  : ['Vg', 'VgS']
+}
 
 groupPlot['ggF']  = {
     'nameHR' : "ggF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 623,
     'colorPlt': "",
     'samples'  : ['ggH_hww']
@@ -69,7 +69,7 @@ groupPlot['ggF']  = {
 
 groupPlot['VBF']  = {
     'nameHR' : "VBF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 600,
     'colorPlt': "",
     'samples'  : ['qqH_hww']
@@ -92,13 +92,13 @@ plot['Fake']  = {
     'scale'    : 1.0
 }
 
-plot['TTTo2L2Nu']  = {
+plot['top']  = {
     'color'    : 400,
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0,
 }
-
+'''
 plot['WW']  = {
     'color'    : 851,
     'isSignal' : 0,
@@ -112,20 +112,20 @@ plot['ggWW']  = {
     'isData'   : 0,
     'scale'    : 1.0,
 }
+'''
+plot['Vg']  = { 
+    'color': 859,
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
-#plot['Vg']  = { 
-#    'color': 859,
-#    'isSignal' : 0,
-#    'isData'   : 0,
-#    'scale'    : 1.0
-#}
-
-#plot['VgS']  = { 
-#    'color'    : 859, # kAzure -1  
-#    'isSignal' : 0,
-#    'isData'   : 0,
-#    'scale'    : 1.0
-#}
+plot['VgS']  = { 
+    'color'    : 859, # kAzure -1  
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
 plot['WZ']  = {
     'color'    : 619,
@@ -178,4 +178,4 @@ plot['DATA']  = {
 # Legend definition
 legend = {}
 legend['lumi'] = 'L = 109.0 fb^{-1}'
-legend['sqrt'] = '#sqrt{s} = 13.6 TeV'
+legend['sqrt'] = 'mkShapes__2026_WW_2024.root#sqrt{s} = 13.6 TeV'
