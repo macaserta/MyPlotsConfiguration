@@ -1,7 +1,7 @@
 import sys,os
 
 #: tag used to identify the configuration folder version
-tag = "2026_WW_2024_WW"   
+tag = "2026_WW_2024_WW_2024btag"   
 
 #: file to use as runner script, default uses mkShapesRDF.shapeAnalysis.runner, otherwise specify path to script
 runnerFile = "default"
@@ -41,10 +41,10 @@ plotFile = "plot.py"
 structureFile = "structure.py"
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = "nuisances_ALL.py"
+nuisancesFile = "nuisances.py"
 
 # path to folder where to save plots
-plotPath = "/eos/user/m/mcaserta/www/Plots_2026/Plots/WW_2024_DY1050/" + tag
+plotPath = "/eos/user/m/mcaserta/www/Plots_2026/Plots/WW_2024/" + tag
 
 # this lines are executed right before the runner on the condor node
 mountEOS = [
