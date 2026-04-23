@@ -352,75 +352,7 @@ for flavour in ['bc', 'light']:
         }
 
 
-'''
-year = '2024_Summer24'
-btv_path =  '/eos/user/m/mcaserta/mkShapes_2026/mkShapesRDF/mkShapesRDF/processor/data/jsonpog-integration/POG/BTV/' + year
-shifts = ['central', 'up_uncorrelated', 'down_uncorrelated', 'up_correlated', 'down_correlated']
-shift_str = '{"' + '","'.join(shifts) + '"}'
 
-for flavour in ['bc', 'light']:
-    btagsf_tmp = 'btagSF_TMP' + flavour
-    aliases[btagsf_tmp] = {
-        'linesToProcess':[
-            f'ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/evaluate_btagSF{flavour}_cc.so","", ROOT.kTRUE)',
-            f"ROOT.gInterpreter.Declare('btagSF{flavour} btag_SF{flavour} = btagSF{flavour}(\"/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/data/btag_eff/bTagEff_2024_ttbar_loose.root\",\"{year}\",\"_parT\");')"
-        ],
-        'expr': f'btag_SF{flavour}(CleanJet_pt, CleanJet_eta, CleanJet_jetIdx, nCleanJet, Jet_hadronFlavour, Jet_btag{bAlgo}, "L", {shift_str})',
-        'samples' : mc,
-    }
-    for i in range(len(shifts)):
-        btagsf = 'btagSF' + flavour
-        if shifts[i] != 'central':
-            btagsf += '_' + shifts[i]
-        aliases[btagsf] = {
-            'expr': f"{btagsf_tmp}[{i}]",
-            'samples' : mc,
-        }
-
-
-
-#Sebastiano
-eff_map_year = '2024' # ['2022', '2022EE', '2023', '2023BPix']
-year = 'Run3-24CDEReprocessingFGHIPrompt-Summer24-NanoAODv15' # ['Run3-22CDSep23-Summer22-NanoAODv12', 'Run3-22EFGSep23-Summer22EE-NanoAODv12, 'Run3-23CSep23-Summer23-NanoAODv12', 'Run3-23DSep23-Summer23BPix-NanoAODv12', 'Run3-24CDEReprocessingFGHIPrompt-Summer24-NanoAODv15']
-
-for flavour in ['bc', 'light']:
-    for shift in ['central', 'down_correlated', 'down_uncorrelated', 'up_correlated', 'up_uncorrelated']:
-        btagsf = 'btagSF' + flavour
-        if shift != 'central':
-            btagsf += '_' + shift
-        aliases[btagsf] = {
-            'linesToAdd': [f'#include "{macros}evaluate_btagSF{flavour}.cc"'],
-            'linesToProcess': [f"ROOT.gInterpreter.ProcessLine('btagSF{flavour} btagSF{flavour}_{shift} = btagSF{flavour}(\"{btagmaps}/bTagEff_2024_ttbar_loose.root\", \"{year}\");')"],
-            'expr': f'btagSF{flavour}_{shift}(CleanJet_pt, CleanJet_eta, CleanJet_jetIdx, nCleanJet, Jet_hadronFlavour, Jet_btag{bAlgo}, {bWP}, "{shift}", {bAlgo},"{eff_map_year}")',
-            'samples' : mc,
-        }
-
-
-
-year = '2024_Summer24'
-btv_path =  '/eos/user/m/mcaserta/mkShapes_2026/mkShapesRDF/mkShapesRDF/processor/data/jsonpog-integration/POG/BTV/' + year
-shifts = ['central', 'up_uncorrelated', 'down_uncorrelated', 'up_correlated', 'down_correlated']
-shift_str = '{"' + '","'.join(shifts) + '"}'
-
-for flavour in ['bc', 'light']:
-    btagsf_tmp = 'btagSF_TMP_' + flavour
-    aliases[btagsf_tmp] = {
-        'linesToProcess':[
-            f'ROOT.gSystem.Load("/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/extended/evaluatebtag/evaluate_btagSF{flavour}_cc.so","", ROOT.kTRUE)',
-            f"ROOT.gInterpreter.Declare('btagSF{flavour} btag_SF{flavour} = btagSF{flavour}(\"/afs/cern.ch/user/m/mcaserta/private/Production/mkShapesRDF/MyPlotsConfiguration/MyPlotsConfiguration/data/btag_eff/bTagEff_2024_ttbar_loose.root\",\"{year}\",\"_parT\");')"
-        ],
-        'expr': f'btag_SF{flavour}(CleanJet_pt, CleanJet_eta, CleanJet_jetIdx, nCleanJet, Jet_hadronFlavour, Jet_btag{bAlgo}, "L", {shift_str})',
-        'samples' : mc,
-    }
-    for i in range(len(shifts)):
-        btagsf = 'btagSF' + flavour
-        if shifts[i] != 'central':
-            btagsf += '_' + shifts[i]
-        aliases[btagsf] = {
-            'expr': f"{btagsf_tmp}[{i}]",
-            'samples' : mc,
-        }
-'''
 ##########################################################################
 # End of b tagging 
 ##########################################################################
