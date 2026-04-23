@@ -1,8 +1,11 @@
 
-mcProduction = 'Summer23BPix_130x_nAODv12_Full2023BPixv12'
-mcSteps      = 'MCl2loose2023BPixv12__MCCorr2023BPixv12JetScaling__l2tight'
-dataReco     = 'Run2023BPix_Prompt_nAODv12_Full2023BPixv12'
-dataSteps    = 'DATAl2loose2023BPixv12__l2tight'
+mcProduction = 'Summer24_150x_nAODv15_Full2024v15'
+mcSteps      = 'MCl2loose2024v15__MCCorr2024v15__JERFrom23BPix__l2tight'
+dataRecoEGamma     = 'Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_EGamma'
+dataRecoMuon = 'Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_Muon'
+dataRecoMuonEG = 'Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_MuonEG'
+dataSteps    = 'DATAl2loose2024v15__l2loose'
+
 
 treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 limitFiles = -1
@@ -26,7 +29,15 @@ def makeMCDirectory(var=''):
 
 mcDirectory = makeMCDirectory()
 #fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
-dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
+#dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
+fakeDirectoryMuon = os.path.join(treeBaseDir, dataRecoMuon, dataSteps)
+dataDirectoryMuon = os.path.join(treeBaseDir, dataRecoMuon, dataSteps)
+fakeDirectoryEGamma = os.path.join(treeBaseDir, dataRecoEGamma, dataSteps)
+dataDirectoryEGamma = os.path.join(treeBaseDir, dataRecoEGamma, dataSteps)
+fakeDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
+dataDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
+
+
 print(treeBaseDir)
 
 # merge cuts
@@ -50,8 +61,8 @@ nuisances = {}
 #### Luminosity
 
 # https://twiki.cern.ch/twiki/bin/view/CMS/LumiRecommendationsRun3
-nuisances['lumi_2023'] = {
-    'name'    : 'lumi_2023',
+nuisances['lumi_2024'] = {
+    'name'    : 'lumi_2024',
     'type'    : 'lnN',
     'samples' : dict((skey, '1.014') for skey in mc)
 }
@@ -61,7 +72,7 @@ nuisances['lumi_2023'] = {
 ##### Electron Efficiency and energy scale
 
 nuisances['eff_e'] = {
-    'name': 'CMS_eff_e_2023BPix',
+    'name': 'CMS_eff_e_2024',
     'kind': 'weight',
     'type': 'shape',
     'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc),
@@ -70,7 +81,7 @@ nuisances['eff_e'] = {
 ##### Muon Efficiency and energy scale
 
 nuisances['eff_m'] = {
-    'name': 'CMS_eff_m_2023BPix',
+    'name': 'CMS_eff_m_2024',
     'kind': 'weight',
     'type': 'shape',
     'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc),
@@ -81,7 +92,7 @@ nuisances['eff_m'] = {
 trig_syst = ['TriggerSFWeight_2l_u/TriggerSFWeight_2l', 'TriggerSFWeight_2l_d/TriggerSFWeight_2l']
 
 nuisances['trigg'] = {
-    'name': 'CMS_eff_hwwtrigger_2023BPix',
+    'name': 'CMS_eff_hwwtrigger_2024',
     'kind': 'weight',
     'type': 'shape',
     'samples': dict((skey, trig_syst) for skey in mc)
