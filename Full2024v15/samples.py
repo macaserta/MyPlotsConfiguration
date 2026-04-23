@@ -12,6 +12,10 @@ dataRecoMuon = 'Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_Muon'
 dataRecoMuonEG = 'Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_MuonEG'
 dataSteps    = 'DATAl2loose2024v15__l2loose'
 
+#Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_EGamma/
+#Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_Muon/
+#Run2024_ReRecoCDE_PromptFGHI_nAODv15_Full2024v15_MuonEG/
+
 
 ##############################################
 ###### Tree base directory for the site ######
@@ -29,16 +33,17 @@ def makeMCDirectory(var=""):
         return "/".join([_treeBaseDir, mcProduction, mcSteps + "__" + var])
 
 
-mcDirectory   = makeMCDirectory()
+#mcDirectory   = makeMCDirectory()
 # fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
+#dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
+#fakeDirectory = dataDirectory
+mcDirectory   = makeMCDirectory()
 fakeDirectoryMuon = os.path.join(treeBaseDir, dataRecoMuon, dataSteps)
 dataDirectoryMuon = os.path.join(treeBaseDir, dataRecoMuon, dataSteps)
 fakeDirectoryEGamma = os.path.join(treeBaseDir, dataRecoEGamma, dataSteps)
 dataDirectoryEGamma = os.path.join(treeBaseDir, dataRecoEGamma, dataSteps)
 fakeDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
 dataDirectoryMuonEG = os.path.join(treeBaseDir, dataRecoMuonEG, dataSteps)
-
-
 
 
 samples = {}
@@ -150,13 +155,24 @@ samples['DY'] = {
 ########## Top #########
 files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + nanoGetSampleFiles(mcDirectory, 'TWminusto2L2Nu') + nanoGetSampleFiles(mcDirectory, 'TbarWplusto2L2Nu')
 
-
-
-samples['TTTo2L2Nu'] = {
+samples['top'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 5
 }
+
+
+addSampleWeight(
+    samples,
+    'top',
+    'TTTo2L2Nu',
+    '(topGenPt * antitopGenPt > 0.) * '
+    '(TMath::Sqrt((0.103*TMath::Exp(-0.0118*topGenPt) - 0.000134*topGenPt + 0.973) * '
+    '(0.103*TMath::Exp(-0.0118*antitopGenPt) - 0.000134*antitopGenPt + 0.973))) + '
+    '(topGenPt * antitopGenPt <= 0.)'
+)
+
+
 
 ########## WW #########
 files = nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu')
@@ -171,8 +187,8 @@ samples['WW'] = {
 files = []
 for label in [
         "GluGlutoContintoWWtoENuENu",
-		"GluGlutoContintoWWtoENuMuNu",
-		"GluGlutoContintoWWtoENuTauNu",
+	    "GluGlutoContintoWWtoENuMuNu",
+	    "GluGlutoContintoWWtoENuTauNu",
         "GluGlutoContintoWWtoMuNuENu",
         "GluGlutoContintoWWtoMuNuMuNu",
         "GluGlutoContintoWWtoMuNuTauNu",
@@ -263,9 +279,6 @@ addSampleWeight(samples, 'VgS', "DYGto2LG-1Jets_Bin-MLL-4to50", "(Gen_ZGstar_mas
 #addSampleWeight(samples, 'VgS', "WGtoLNuG-1J_PTG600", "(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass <= 0.1) * (gstarLow * 0.94)")
 addSampleWeight(samples, 'VgS', "WZTo3LNu", "(Gen_ZGstar_mass > 0.1) * (gstarLow * 0.94)")
 
-
-
-
 ########## VVV #########
 files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
         nanoGetSampleFiles(mcDirectory, 'WZZ') + \
@@ -278,6 +291,9 @@ samples['VVV'] = {
     'FilesPerJob': 2
 }
 
+###########################################
+###############  SIGNALS  #################
+########################################### 
 
 samples['ggH_hww'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2Nu_M125'),
@@ -307,7 +323,6 @@ for _, sd in DataRun:
   for pd in DataSets:
     tag = pd + '_' + sd
 
-
     if tag.startswith('MuonEG'):
         files = nanoGetSampleFiles(fakeDirectoryMuonEG, tag)
     elif tag.startswith('Muon'):
@@ -319,7 +334,6 @@ for _, sd in DataRun:
 
     samples['Fake']['name'].extend(files)
     addSampleWeight(samples, 'Fake', tag, DataTrig[pd])
-
 
 ###########################################
 ################## DATA ###################
@@ -338,14 +352,15 @@ for _, sd in DataRun:
   for pd in DataSets:
     datatag = pd + '_' + sd
     
-     if datatag.startswith('MuonEG'):
+  #  files = nanoGetSampleFiles(dataDirectory, datatag)
+    if datatag.startswith('MuonEG'):
         files = nanoGetSampleFiles(dataDirectoryMuonEG, datatag)
     elif datatag.startswith('Muon'):
         files = nanoGetSampleFiles(dataDirectoryMuon, datatag)
     elif datatag.startswith('EGamma'):
         files = nanoGetSampleFiles(dataDirectoryEGamma, datatag)
 
-
+ 
     print(datatag)
 
     samples['DATA']['name'].extend(files)
