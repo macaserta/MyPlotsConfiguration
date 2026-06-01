@@ -2,7 +2,7 @@
 variables = {}
 
 variables['events'] = {
-    'name'  : '1',      
+    'name'  : 'mll/mll',      
     'range' : (1,0,2),  
     'xaxis' : 'events', 
     'fold'  : 3
@@ -113,7 +113,7 @@ variables['phi2']  = {
     'xaxis' : '#phi 2nd lep',
     'fold'  : 3
 }
-
+'''
 variables['jetdeepb']  = {
     'name': 'Alt(Take(Jet_btagDeepFlavB, CleanJet_jetIdx), 0, -99)',
     'range' : (30,0,1),
@@ -132,7 +132,7 @@ variables['jetrpartb']  = {
     'xaxis' : 'B tagger 1st jet (DeepB)',
     'fold' : 0
 }
-
+'''
 # MET
 variables['trkMet']  = { 
     'name': 'TkMET_pt',
@@ -163,32 +163,36 @@ variables['njet']  = {
 }
 
 variables['jetpt1']  = {
-    #'name': 'Alt(CleanJet_pt, 0, -99) - 9999.9*(CleanJet_pt[0]<30)',
-    'name': 'Alt(CleanJet_pt, 0, -99)',
+    'name': 'Alt(CleanJet_pt, 0, -99) - 9999.9*(Alt(CleanJet_pt, 0, -99)<30)',
+   # 'name': 'Alt(CleanJet_pt, 0, -99) - 9999.9*(CleanJet_pt[0]<30)',
+   # 'name': 'Alt(CleanJet_pt, 0, -99)',
     'range' : (40,0,200),
     'xaxis' : 'p_{T} 1st jet',
     'fold' : 0
 }
 
 variables['jetpt2']  = {
+    'name': 'Alt(CleanJet_pt, 1, -99) - 9999.9*(Alt(CleanJet_pt, 1, -99)<30)',
     #'name': 'Alt(CleanJet_pt, 1, -99)  - 9999.9*(CleanJet_pt[1]<30)',
-    'name': 'Alt(CleanJet_pt, 1, -99)',
+    #'name': 'Alt(CleanJet_pt, 1, -99)',
     'range' : (40,0,200),
     'xaxis' : 'p_{T} 2nd jet',
     'fold' : 0
 }
 
 variables['jeteta1']  = {
+    'name': 'Alt(CleanJet_pt, 0, -99) - 9999.9*(Alt(CleanJet_pt, 0, -99)<30)',
     #'name': 'Alt(CleanJet_eta, 0, -99) - 9999.9*(CleanJet_pt[0]<30)',
-    'name': 'Alt(CleanJet_eta, 0, -99)',
+    #'name': 'Alt(CleanJet_eta, 0, -99)',
     'range' : (30,-4.7,4.7),
     'xaxis' : '#eta 1st jet',
     'fold' : 0
 }
 
 variables['jeteta2']  = {
+    'name': 'Alt(CleanJet_pt, 1, -99) - 9999.9*(Alt(CleanJet_pt, 1, -99)<30)',
     #'name': 'Alt(CleanJet_eta, 1, -99) - 9999.9*(CleanJet_pt[1]<30)',
-    'name': 'Alt(CleanJet_eta, 1, -99)',
+    #'name': 'Alt(CleanJet_eta, 1, -99)',
     'range' : (30,-4.7,4.7),
     'xaxis' : '#eta 2nd jet',
     'fold' : 0
