@@ -11,6 +11,8 @@ treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/'
 
 limitFiles = -1
 
+
+
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 redirector = ""
@@ -121,7 +123,7 @@ nuisances['fake_ele'] = {
     }
 }
 nuisances['fake_ele_stat'] = {
-    'name'    : 'CMS_fake_stat_e_2022',
+        'name'    : 'CMS_fake_stat_e_2022',
     'kind'    : 'weight',
     'type'    : 'shape',
     'samples' : {
@@ -271,7 +273,7 @@ nuisances['PU'] = {
     'kind': 'weight',
     'type': 'shape',
     'samples': dict((skey, ['puWeightUp/puWeight', 'puWeightDown/puWeight']) for skey in mc),
-    'AsLnN'   : '0',
+    'AsLnN'   : '0'
 }        
 
 ##### PS
@@ -442,6 +444,8 @@ nuisances['QCDscale_qqH']  = {
         'qqH_hww' : variations,
     }
 }
+
+
 nuisances['QCDscale_ggWW'] = {
     'name': 'QCDscale_ggWW',
     'type': 'lnN',
@@ -693,81 +697,7 @@ nuisances['WWnorm2j']  = {
               }
 
 
-#nuisances['DYembnorm0j']  = {
-#               'name'  : 'CMS_hww_2022_DYttnorm0j',
-#               'samples'  : {
-#                   'DY' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts0j
-#              }
-#nuisances['DYembnorm1j']  = {
-#               'name'  : 'CMS_hww_2022_DYttnorm1j',
-#               'samples'  : {
-#                   'DY' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts1j
-#              }
-#nuisances['DYembnorm2j']  = {
-#                 'name'  : 'CMS_hww_2022_DYttnorm2j',
-#                 'samples'  : {
-#                   'DY' : '1.00',
-#                     },
-#                 'type'  : 'rateParam',
-#                 'cuts'  : cuts_2j,
-#                }
-#nuisances['WWnorm0j']  = {
-#               'name'  : 'CMS_hww_WWnorm0j',
-#               'samples'  : {
-#                   'WW' : '1.00',
-#                   #'WW_minnlo' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts0j
-#              }
-#nuisances['WWnorm1j']  = {
-#               'name'  : 'CMS_hww_WWnorm1j',
-#               'samples'  : {
-#                   'WW' : '1.00',
-#                   #'WW_minnlo' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts1j
-#              }
-#nuisances['WWnorm2j']  = {
-#               'name'  : 'CMS_hww_WWnorm2j',
- #              'samples'  : {
- #                  'WW' : '1.00',
-#                   #'WW_minnlo' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts': cuts_2j,
-#              }
-#nuisances['Topnorm0j']  = {
-#               'name'  : 'CMS_hww_2022_Topnorm0j',
- #              'samples'  : {
- #                  'top' : '1.00',
- #                  },
- #              'type'  : 'rateParam',
- #              'cuts'  : cuts0j
- #             }
-#nuisances['Topnorm1j']  = {
-#               'name'  : 'CMS_hww_2022_Topnorm1j',
-#               'samples'  : {
-#                   'top' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts1j
-#              }
-#nuisances['Topnorm2j']  = {
-#               'name'  : 'CMS_hww_2022_Topnorm2j',
-#               'samples'  : {
-#                   'top' : '1.00',
-#                   },
-#               'type'  : 'rateParam',
-#               'cuts'  : cuts_2j
-#              }
+
 
 ### MC statistical uncertainty
 autoStats = True
