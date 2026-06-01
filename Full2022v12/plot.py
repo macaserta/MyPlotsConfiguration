@@ -8,7 +8,7 @@ groupPlot['DY']  = {
 }
 
 groupPlot['top']  = {
-    'nameHR'   : 'Top',
+    'nameHR'   : 'top',
     'isSignal' : 0,
     'color'    : 400,
     'samples'  : ['top']
@@ -35,12 +35,19 @@ groupPlot['Fake']  = {
     'colorPlt': "#778899",
     'samples'  : ['Fake']
 }
-
+'''
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
-    'isSignal' : 0,
+    'isSignal' : 1,
     'color'    : 851,
     'samples'  : ['WW','ggWW']
+}
+'''
+groupPlot['WW']  = {
+    'nameHR'   : 'WW',
+    'isSignal' : 1,
+    'color'    : 851,
+    'samples'  : ['WW']
 }
 
 groupPlot['VVV']  = {  
@@ -61,7 +68,7 @@ groupPlot['Vg']  = {
 
 groupPlot['ggF']  = {
     'nameHR' : "ggF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 623,
     'colorPlt': "",
     'samples'  : ['ggH_hww']
@@ -69,7 +76,7 @@ groupPlot['ggF']  = {
 
 groupPlot['VBF']  = {
     'nameHR' : "VBF",
-    'isSignal' : 1,
+    'isSignal' : 0,
     'color'    : 600,
     'colorPlt': "",
     'samples'  : ['qqH_hww']
@@ -105,14 +112,14 @@ plot['WW']  = {
     'isData'   : 0,
     'scale'    : 1.0,
 }
-
+'''
 plot['ggWW']  = {
     'color'    : 851,
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0,
 }
-
+'''
 plot['Vg']  = { 
     'color': 859,
     'isSignal' : 0,
@@ -177,5 +184,5 @@ plot['DATA']  = {
 
 # Legend definition
 legend = {}
-legend['lumi'] = 'L =  8.077 fb^{-1}'
-legend['sqrt'] = '#sqrt{s} = 13.6 TeV'
+legend['lumi'] = 'L = 109.0 fb^{-1}'
+legend['sqrt'] = 'mkShapes__2026_WW_2024.root#sqrt{s} = 13.6 TeV'
