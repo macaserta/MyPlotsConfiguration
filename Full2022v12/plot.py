@@ -35,14 +35,14 @@ groupPlot['Fake']  = {
     'colorPlt': "#778899",
     'samples'  : ['Fake']
 }
-'''
+
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
     'isSignal' : 1,
     'color'    : 851,
     'samples'  : ['WW','ggWW']
 }
-'''
+
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
     'isSignal' : 1,
@@ -112,14 +112,13 @@ plot['WW']  = {
     'isData'   : 0,
     'scale'    : 1.0,
 }
-'''
+
 plot['ggWW']  = {
     'color'    : 851,
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0,
 }
-'''
 plot['Vg']  = { 
     'color': 859,
     'isSignal' : 0,
