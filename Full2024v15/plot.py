@@ -8,7 +8,7 @@ groupPlot['DY']  = {
 }
 
 groupPlot['top']  = {
-    'nameHR'   : 'Top',
+    'nameHR'   : 'top',
     'isSignal' : 0,
     'color'    : 400,
     'samples'  : ['top']
@@ -35,14 +35,21 @@ groupPlot['Fake']  = {
     'colorPlt': "#778899",
     'samples'  : ['Fake']
 }
-'''
+
 groupPlot['WW']  = {
     'nameHR'   : 'WW',
     'isSignal' : 1,
     'color'    : 851,
     'samples'  : ['WW','ggWW']
 }
-'''
+
+groupPlot['WW']  = {
+    'nameHR'   : 'WW',
+    'isSignal' : 1,
+    'color'    : 851,
+    'samples'  : ['WW']
+}
+
 groupPlot['VVV']  = {  
     'nameHR' : 'VVV',
     'isSignal' : 0,
@@ -98,7 +105,7 @@ plot['top']  = {
     'isData'   : 0,
     'scale'    : 1.0,
 }
-'''
+
 plot['WW']  = {
     'color'    : 851,
     'isSignal' : 0,
@@ -112,7 +119,7 @@ plot['ggWW']  = {
     'isData'   : 0,
     'scale'    : 1.0,
 }
-'''
+
 plot['Vg']  = { 
     'color': 859,
     'isSignal' : 0,
