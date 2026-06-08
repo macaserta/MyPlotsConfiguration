@@ -1,7 +1,9 @@
 import sys,os
 
 #: tag used to identify the configuration folder version
-tag = "2026_WW_2024_WW_2024btag"   
+tag = "Run3_WW_2024_nuisancesALL_def2"
+#tag = "2024v15_cutBased_LooseID_tthMVA_Run3__mu_cut_TightID_pfIsoLoose_HWW_tthmva_HWW"   
+#tag = "nominal_SR_CR__noJetInHorn_bTag_JES_JER"
 
 #: file to use as runner script, default uses mkShapesRDF.shapeAnalysis.runner, otherwise specify path to script
 runnerFile = "default"
@@ -10,17 +12,20 @@ runnerFile = "default"
 outputFile = "mkShapes__{}.root".format(tag)
 
 #: path to ouput folder
-outputFolder = "/eos/user/" + os.getlogin()[0] + "/" + os.getlogin() + "/mkShapesRDF_rootfiles/" + tag + "/rootFile/"
+outputFolder = "/eos/user/" + os.getlogin()[0] + "/" + os.getlogin() + "/mkShapesRDF_rootfiles/Run3_WW/{}/rootFile/".format(tag)
+print("Output folder: {}".format(outputFolder))
+#outputFolder = "../../../../../../../../../../../../../eos/user/s/sblancof/MC/rootFiles"
 #outputFolder = "rootFiles/DY_CR_2024/"
 
 # path to batch folder (used for condor submission)
+# batchFolder = "/eos/user/" + os.getlogin()[0] + "/" + os.getlogin() + "/mkShapesRDF_rootfiles/" + tag + "/16Feb2026/condor/"
 batchFolder = "condor"
 
 # path to configuration folder (will contain all the compiled configuration files)
 configsFolder = "configs"
 
 # luminosity to normalize to (in 1/fb) https://twiki.cern.ch/twiki/bin/viewauth/CMS/PdmVRun3Analysis
-lumi = 109.0
+lumi = 109.0 
 
 # file with dict of aliases to define
 aliasesFile = "aliases.py"
@@ -41,10 +46,12 @@ plotFile = "plot.py"
 structureFile = "structure.py"
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = "nuisances.py"
+nuisancesFile = "nuisances_ALL.py"
 
 # path to folder where to save plots
-plotPath = "/eos/user/m/mcaserta/www/Plots_2026/Plots/WW_2024/" + tag
+plotPath = "/eos/user/m/mcaserta/www/Plots_2026/Plots/Run3_WW/Run3_WW_2024_nuisancesALL_def1/"
+#plotPath = "/eos/user/" + os.getlogin()[0] + "/" + os.getlogin() +  "/www/plotsWW2024_paper/TopCR/{}/".format(tag) 
+#plotPath = "Plots"
 
 # this lines are executed right before the runner on the condor node
 mountEOS = [
