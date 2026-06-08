@@ -14,6 +14,7 @@ import argparse
 from sys import argv
 
 def defaultParser():
+    
 
     parser = argparse.ArgumentParser(add_help=False)
     
@@ -44,8 +45,8 @@ def run(submit=False, onlySample=None):
     if "mkShapesRDF" in prePath:
         prePath = prePath.split("mkShapesRDF/")[0]   ## Assume you work in processor folder
 
-    path = prePath + "mkShapesRDF/examples/PlotsConfigurationsRun3/ggH/Full2024v15/condor/EGamma1_Run2024I-Prompt-v1/"
-    output_path = "/eos/user/s/sblancof/MC/rootFiles/"
+    path = prePath + "mkShapesRDF/FullRun3/WW2024_Paper/condor/EGamma1_Run2024I-Prompt-v1/"
+    output_path = "/eos/user/m/mcaserta/mkShapesRDF_rootfiles/Run3_WW/Run3_WW_2024_nuisancesALL_def1/rootFile/"
     jobDir = path
 
     cmd = "find {} -type d -name '*'".format(path)
@@ -66,7 +67,7 @@ def run(submit=False, onlySample=None):
             if not fname.startswith(onlySample):
                 continue
         
-        file_name = output_path + "/mkShapes__HWW_2024__ALL__" + fname + ".root"
+        file_name = output_path + "/mkShapes__Run3_WW_2024_nuisancesALL_def1__ALL__" + fname + ".root"
         error_file = jobDir + fname + "/" + "err.txt"
         script_file = jobDir + fname + "/" + "script.py"
 
@@ -89,7 +90,10 @@ universe = vanilla
 executable = run.sh
 arguments = $(Folder)
 should_transfer_files = YES
-transfer_input_files = $(Folder)/script.py, /afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/mkShapesRDF/shapeAnalysis/runner.py, /afs/cern.ch/work/s/sblancof/private/Run3Analysis/Run2024_ReRecoCDE_PromptFGHI/mkShapesRDF/mkShapesRDF/include/headers.hh
+transfer_input_files = $(Folder)/script.py, /afs/cern.ch/user/m/mcaserta/private/Run3_WW/mkShapesRDF/mkShapesRDF/shapeAnalysis/runner.py, /afs/cern.ch/user/m/mcaserta/private/Run3_WW/mkShapesRDF/mkShapesRDF/include/headers.hh, /afs/cern.ch/user/m/mcaserta/private/Run3_WW/mkShapesRDF/FullRun3/extended/NNLOPS_reweight.root
+output = $(Folder)/out.txt
+error  = $(Folder)/err.txt
+log    = $(Folder)/log.txt
 request_cpus   = 1
 +JobFlavour = "testmatch"
 queue 1 Folder in  RPLME_ALLSAMPLES"""
