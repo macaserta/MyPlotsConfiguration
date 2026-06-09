@@ -279,7 +279,7 @@ aliases['bReq1'] = {
 
 aliases['bReq2'] = {
     'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && '
-            'Take(Jet_btag{}, CleanJet_jetIdx) > {}) == 2'
+            'Take(Jet_btag{}, CleanJet_jetIdx) > {}) >= 2'
             .format(bAlgo, btagging_WPs[bAlgo][bWP]),
 }
 
